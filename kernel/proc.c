@@ -10,6 +10,8 @@ struct cpu cpus[NCPU];
 
 struct proc proc[NPROC];
 
+static uint64 num_processes = 0;
+
 struct proc *initproc;
 
 int nextpid = 1;
@@ -152,6 +154,8 @@ static void freeproc(struct proc *p) {
     p->killed = 0;
     p->xstate = 0;
     p->state = UNUSED;
+
+    --num_processes;
 }
 
 // Create a user page table for a given process,
@@ -219,6 +223,8 @@ void userinit(void) {
 
     p->state = RUNNABLE;
 
+    ++num_processes;
+
     release(&p->lock);
 }
 
@@ -274,6 +280,8 @@ int fork(void) {
 
     safestrcpy(np->name, p->name, sizeof(p->name));
 
+    np->trace_mask = p->trace_mask;
+
     pid = np->pid;
 
     release(&np->lock);
@@ -284,6 +292,7 @@ int fork(void) {
 
     acquire(&np->lock);
     np->state = RUNNABLE;
+    ++num_processes;
     release(&np->lock);
 
     return pid;
@@ -592,4 +601,8 @@ void procdump(void) {
         printf("%d %s %s", p->pid, state, p->name);
         printf("\n");
     }
+}
+
+uint64 get_num_processes(void) {
+    return num_processes;
 }
