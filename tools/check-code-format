@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+cd "$(dirname "$0")/.."
+
+if [ -n "$CLANG_FORMAT" ]; then
+    clang_format="$CLANG_FORMAT"
+else
+    clang_format='clang-format'
+fi
+
+find 'labs' -type f '(' -name '*.c' -o -name '*.h' ')' -exec "$clang_format" --Werror -n --verbose '{}' +

@@ -1,0 +1,8 @@
+[submodule "labs/01-util"]
+	path = labs/01-util
+	url = ../xv6-labs
+	branch = labs/01-util
+[submodule "labs/02-syscall"]
+	path = labs/02-syscall
+	url = ../xv6-labs
+	branch = labs/02-syscall

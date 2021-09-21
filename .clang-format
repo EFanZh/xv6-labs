@@ -1,0 +1,15 @@
+BasedOnStyle: Microsoft
+AccessModifierOffset: -4
+AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
+BreakBeforeBraces: Attach
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+IncludeBlocks: Merge
+IndentCaseLabels: true
+IndentGotoLabels: false
+InsertTrailingCommas: Wrapped
+KeepEmptyLinesAtTheStartOfBlocks: false
+NamespaceIndentation: Inner
+SortIncludes: false
+SpacesInContainerLiterals: false
