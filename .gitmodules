@@ -6,3 +6,7 @@
 	path = labs/02-syscall
 	url = ../xv6-labs
 	branch = labs/02-syscall
+[submodule "labs/03-pgtbl"]
+	path = labs/03-pgtbl
+	url = ../xv6-labs
+	branch = labs/03-pgtbl
